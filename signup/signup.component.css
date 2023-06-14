@@ -1,0 +1,18 @@
+.card{
+    border: none;
+    width: 500px;
+    padding: 40px;
+    left: 50%;
+    position:absolute;
+    transform: translate(-50%, 50%);
+    background:rgb(160, 175, 185);
+    background: linear-gradient(90deg, rgb(152, 203, 247) 0%, rgb(152, 123, 211) 100%);
+}
+
+.card h1,h6{
+    color: aliceblue;
+}
+
+label{
+    color: aliceblue;
+}

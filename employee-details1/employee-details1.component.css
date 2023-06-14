@@ -1,0 +1,38 @@
+.employee-details-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 90px;
+  height: 100vh;
+}
+
+.employee-details-box {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 30px;
+  width: 400px;
+  text-align: center;
+}
+
+.employee-details-table {
+  margin: 0;
+  text-align: left;
+}
+
+.employee-details-table td {
+  padding: 5px;
+  text-align: left;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.background-image {
+  background-image: url('../../assets/flat-lay-back-school-concept-with-copy-space_23-2148559670.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
+

@@ -1,0 +1,25 @@
+.test{
+    padding: 5px 5px;
+}
+
+.head{
+    color: antiquewhite;
+}
+
+.background-color-alt {
+    background-color: #bd2020; /* Set your desired background color here */
+  }
+
+ h2{
+    text-align: center;
+ }
+
+ .admin-name {
+    top: 10px;
+    left: 1px;
+    font-weight: bold;
+    color: rgb(78, 158, 218);
+    
+  }
+  
+  

@@ -1,0 +1,169 @@
+<nav class="navbar navbar-light">
+    <div class="container-fluid">
+        <h1 style="text-align: center; color: rgb(66, 137, 198); font-size:large;">STUDENT REGISTRATION PORTAL<i class="fa fa-user-graduate"></i></h1>
+       
+        <div class="admin-name">
+          <img src="../../assets/user-logo.png" alt="A beautiful image" width="30" height="30" title="Click to enlarge">  {{userRole}}
+        </div>
+        <div class="d-flex">
+            <button (click)="clickAddEmployee()" [hidden]="isDisabled" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Add Student Details</button>
+            <button routerLink="/homepage" class="btn btn-danger mx-2">LogOut</button>
+        </div>
+    </div>
+
+</nav>
+
+
+<div>
+  <style>
+    .profile-cell {
+        width: 1%;
+        white-space: nowrap;
+    }
+    .table-striped tbody tr:nth-child(even) {
+    background-color: #7a53b9;
+  }
+</style>
+
+<table class="table mt-3 table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Student ID</th>
+      <th scope="col">Profile</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email ID</th>
+      <th scope="col">Mobile No.</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr *ngFor="let row of employeeData; let i = index">
+      <td>{{ row.id }}</td>
+      <td class="profile-cell">
+        <img style="height: 10%; width: 70%;" [src]="selectedImage" alt="Profile Image"
+            *ngIf="selectedImage && i != 0" />
+            <img *ngIf="i === 0" style="height: 10%; width: 70%;" [src]="changedImage || selectedImage" alt="Profile Image"
+            />  
+    </td>
+      <td>{{ row.firstName }}</td>
+      <td>{{ row.lastName }}</td>
+      <td>{{ row.email }}</td>
+      <td>{{ row.mobile }}</td>
+      <td style="padding: 0;">
+        <button (click)="onEdit(row)" [hidden]="isDisabledEdit" class="btn btn-info" type="button"
+          data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+        <button (click)="deleteEmployee(row)" [hidden]="isDisabled" class="btn btn-danger mx-3">Delete</button>
+        <a routerLink="/employee1" (click)="viewEmployee(row)" class="btn btn-primary">View</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Student Details </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Profile</label>
+                <div>
+                  <input type="file" (change)="onFileSelected($event)">
+                </div>
+                <div *ngIf="selectedImage">
+                  <img [src]="changedImage" alt="Selected Image">
+                </div>
+              </div>
+
+                <div class="mb-3">
+                  <label for="firstName" class="form-label" style="font-weight: bold;">First Name :
+                    <input type="text" formControlName="firstName" class="form-control" id="firstName" aria-describedby="firstName">
+                  </label>
+                  <div *ngIf="formValue.get('firstName').invalid && formValue.get('firstName').touched" class="text-danger">
+                    First Name is required.
+                  </div>
+                  <label for="lastName" class="form-label" style="font-weight: bold;">Last Name :
+                    <input type="text" formControlName="lastName" class="form-control" id="lastName">
+                  </label>
+                  <div *ngIf="formValue.get('lastName').invalid && formValue.get('lastName').touched" class="text-danger">
+                    Last Name is required.
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label"style="font-weight: bold;">Email ID :</label>
+                    <input type="text" formControlName="email" class="form-control" id="email">
+                    <div *ngIf="formValue.get('email').invalid && formValue.get('email').touched" class="text-danger">
+                      Email is required.</div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="mobile" class="form-label"style="font-weight: bold;">Mobile No :</label>
+                    <input type="text" formControlName="mobile" class="form-control" id="mobile" pattern="[0-9]{10}" required>
+                  </div>
+
+                  <div class="mb-3">
+                  <label for="gender"style="font-weight: bold;">Gender :</label>
+                  <select id="gender" formControlName="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <label for="classlist" style="font-weight: bold;">Class :</label>
+                    <select id="classlist" formControlName="classlist">
+                      <option value="">Select class</option>
+                      <option value="Class 1">Class 1 </option>
+                      <option value="Class 2">Class 2</option>
+                      <option value="Class 3">Class 3</option>
+                      <option value="Class 4">Class 4</option>
+                      <option value="Class 5">Class 5</option>
+                      <option value="Class 6">Class 6</option>
+                      <option value="Class 7">Class 7</option>
+                      <option value="Class 8">Class 8</option>
+                      <option value="Class 9">Class 9</option>
+                      <option value="Class 10">Class 10</option>
+                    </select>
+                </div>
+
+                  <div class="mb-3">
+                    <label for="fatherName" class="form-label" style="font-weight: bold;">Father Name : 
+                      <input type="text" formControlName="fatherName" class="form-control" id="fatherName">
+                    </label>
+                    <label for="motherName" class="form-label" style="font-weight: bold;">Mother Name :
+                      <input type="text" formControlName="motherName" class="form-control" id="motherName">
+                    </label>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="address" class="form-label" style="font-weight: bold;">Address :</label>
+                    <input type="text" formControlName="address" class="form-control" id="address">
+                  </div>
+
+                  <div>
+                    <label for="dob" style="font-weight: bold;">Date of Birth :</label>
+                    <input type="date" formControlName="dob" class="form-control" id="dob" name="dob" required>
+                  </div>
+                  
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" *ngIf="showAdd" [disabled]="formValue.invalid" [disabled]="!isPhoneNumberValid" (click)="postEmployeeDetails()" class="btn btn-primary">Add</button>
+          <button type="button" *ngIf="showUpdate" (click)="updateEmployeeDetails()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-secondary" routerLink="/author">Back</button>
+  </div>
+  

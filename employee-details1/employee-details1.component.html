@@ -1,0 +1,52 @@
+<div class="background-image">
+  <div class="employee-details-container" *ngIf="selectedEmployee">
+    <div class="employee-details-box">
+      <h1>Student Detail</h1>
+      <div class="table-container">
+        <table class="employee-details-table">
+        <tr>
+          <td><strong>Full Name:</strong></td>
+          <td>{{ selectedEmployee.firstName }} {{ selectedEmployee.lastName }}</td>
+        </tr>
+        <tr>
+          <td><strong>Email ID:</strong></td>
+          <td>{{ selectedEmployee.email }}</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile No:</strong></td>
+          <td>{{ selectedEmployee.mobile }}</td>
+        </tr>
+        <tr>
+          <td><strong>Gender:</strong></td>
+          <td>{{ selectedEmployee.gender }}</td>
+        </tr>
+        <tr>
+          <td><strong>Father Name:</strong></td>
+          <td>{{ selectedEmployee.fatherName }}</td>
+        </tr>
+        <tr>
+          <td><strong>Mother Name:</strong></td>
+          <td>{{ selectedEmployee.motherName }}</td>
+        </tr>
+        <tr>
+          <td><strong>Address:</strong></td>
+          <td>{{ selectedEmployee.address }}</td>
+        </tr>
+        <tr>
+          <td><strong>Class:</strong></td>
+          <td>{{ selectedEmployee.classlist }}</td>
+        </tr>
+        <tr>
+          <td><strong>Date of Birth:</strong></td>
+          <td>{{ selectedEmployee.dob }}</td>
+        </tr>
+      </table>
+      <button class="btn btn-primary" (click)="generatePDF()">Download Student Detail</button>
+      <div>
+        <button class="btn btn-secondary" routerLink="/dashboard">Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

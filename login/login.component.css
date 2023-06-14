@@ -1,0 +1,29 @@
+.card{
+    border: none;
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background:rgb(176, 189, 199);
+    background: linear-gradient(90deg, rgb(150, 125, 93) 0%, rgb(201, 149, 60) 100%);
+   margin-top: -140px;
+}
+
+.card h1,h6{
+    color: aliceblue;
+}
+
+label{
+    color: aliceblue;
+}
+ 
+.test {
+    background-image: url('../login/loginn-logo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+
+  }
